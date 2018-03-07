@@ -541,7 +541,7 @@ int mma8451_get_ff_mt_cfg(mma8451* device, mma8451_register_ff_mt_cfg* data) {
     return 1;
 }
 int mma8451_set_ff_mt_cfg(mma8451* device, mma8451_register_ff_mt_cfg* data) {
-    if(!mma8451_get_register(device, MMA8451_REGISTER_FF_MT_CFG, (mma8451_register_generic*)data, 0)) {
+    if(!mma8451_set_register(device, MMA8451_REGISTER_FF_MT_CFG, (mma8451_register_generic*)data, 0)) {
         return 0;
     }
     return 1;
