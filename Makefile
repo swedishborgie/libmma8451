@@ -11,8 +11,9 @@ all: compile
 compile: $(LIBNAME) $(TESTNAME)
 
 install: $(LIBNAME)
-	cp $(LIBNAME) /usr/lib/$(LIBNAME)
-	cp $(TESTNAME) /usr/bin/$(TESTNAME)
+	install -d 0755 ${DESTDIR}/usr/lib $(DESTDIR)/usr/bin
+	install -m 0644 $(LIBNAME) $(DESTDIR)/usr/lib/$(LIBNAME)
+	install -m 0644 $(TESTNAME) $(DESTDIR)/usr/bin/$(TESTNAME)
 
 fix-i2c:
 	echo -n 1 > /sys/module/i2c_bcm2708/parameters/combined
