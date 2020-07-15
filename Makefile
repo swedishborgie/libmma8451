@@ -1,6 +1,6 @@
-CC=gcc
-CFLAGS=-fPIC
-CFLAGS_SHARED=-shared
+CC?=gcc
+CFLAGS?=-fPIC
+CFLAGS_SHARED?=-shared
 OBJ=mma8451.o
 LIBNAME=libmma8451.so
 TESTOBJ=mma8451-test.o
@@ -24,7 +24,7 @@ clean:
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 $(LIBNAME): $(OBJ)
-	gcc -o $@ $^ $(CFLAGS) $(CFLAGS_SHARED)
+	$(CC) -o $@ $^ $(CFLAGS) $(CFLAGS_SHARED)
 
 $(TESTNAME): $(LIBNAME) $(TESTOBJ)
-	gcc -o $@ $^ $(CFLAGS) -L. -lmma8451
+	$(CC) -o $@ $^ $(CFLAGS) -L. -lmma8451
